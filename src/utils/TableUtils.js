@@ -15,7 +15,7 @@
  * @module TableUtils
  */
 
-import { createElement, clearChildren } from './UIUtils.js';
+import { createElement, clearChildren } from "./UIUtils.js";
 
 // =================
 // Constants
@@ -43,7 +43,7 @@ function addTableHeader(obj, thead, onSort) {
     clearChildren(thead);
     const row = createElement("tr", ["library-head-row"]);
 
-    Object.keys(obj).forEach(key => {
+    Object.keys(obj).forEach((key) => {
         const th = createElement("th", ["library-head-cell"]);
         th.setAttribute("scope", "col");
         th.textContent = key;
@@ -82,7 +82,7 @@ function updateTableCell(obj, colName) {
 }
 
 function addRowsFromArray(arr, tbody) {
-    arr.forEach(obj => addTableRow(obj, tbody));
+    arr.forEach((obj) => addTableRow(obj, tbody));
 }
 
 function clearTableBody(table) {
@@ -112,7 +112,7 @@ function paginateArray(arr, page = 1, perPage = ROWS_PER_PAGE) {
 }
 
 function toggleColumn(table, colIndex, visible) {
-    Array.from(table.rows).forEach(row => {
+    Array.from(table.rows).forEach((row) => {
         const cell = row.cells[colIndex];
         if (cell) cell.style.display = visible ? "" : "none";
     });
@@ -161,7 +161,10 @@ function initTable(tableId, dataArray) {
 
     return {
         sort: handleSort,
-        filter: (predicate) => { currentData = filterArray(dataArray, predicate); render(currentData); },
+        filter: (predicate) => {
+            currentData = filterArray(dataArray, predicate);
+            render(currentData);
+        },
         paginate: (page, perPage = ROWS_PER_PAGE) => render(paginateArray(currentData, page, perPage)),
         toggleColumn: (index, visible) => toggleColumn(table, index, visible),
     };

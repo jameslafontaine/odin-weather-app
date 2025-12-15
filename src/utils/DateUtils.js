@@ -17,7 +17,7 @@
  * @module DateUtils
  */
 
-import { format, parseISO, differenceInDays, isBefore, isToday } from 'date-fns';
+import { format, parseISO, differenceInDays, isBefore, isToday } from "date-fns";
 
 /**
  * Formats a Date object into a human-readable string (e.g., "Nov 1, 2025").
@@ -26,8 +26,8 @@ import { format, parseISO, differenceInDays, isBefore, isToday } from 'date-fns'
  * @param {string} [pattern='MMM d, yyyy'] - Optional format pattern.
  * @returns {string} The formatted date string.
  */
-export function formatDueDate(date, pattern = 'MMM d, yyyy') {
-    const parsed = typeof date === 'string' ? parseISO(date) : date;
+export function formatDueDate(date, pattern = "MMM d, yyyy") {
+    const parsed = typeof date === "string" ? parseISO(date) : date;
     return format(parsed, pattern);
 }
 
@@ -38,7 +38,7 @@ export function formatDueDate(date, pattern = 'MMM d, yyyy') {
  * @returns {number} Number of days until the due date (negative if overdue).
  */
 export function daysUntilDue(dueDate) {
-    const parsed = typeof dueDate === 'string' ? parseISO(dueDate) : dueDate;
+    const parsed = typeof dueDate === "string" ? parseISO(dueDate) : dueDate;
     return differenceInDays(parsed, new Date());
 }
 
@@ -49,7 +49,7 @@ export function daysUntilDue(dueDate) {
  * @returns {boolean} True if the date is before today, false otherwise.
  */
 export function isOverdue(date) {
-    const parsed = typeof date === 'string' ? parseISO(date) : date;
+    const parsed = typeof date === "string" ? parseISO(date) : date;
     return isBefore(parsed, new Date());
 }
 
@@ -60,7 +60,7 @@ export function isOverdue(date) {
  * @returns {boolean} True if today, false otherwise.
  */
 export function isDueToday(date) {
-    const parsed = typeof date === 'string' ? parseISO(date) : date;
+    const parsed = typeof date === "string" ? parseISO(date) : date;
     return isToday(parsed);
 }
 
@@ -73,8 +73,8 @@ export function isDueToday(date) {
 export function getDueStatus(dueDate) {
     const daysLeft = daysUntilDue(dueDate);
 
-    if (daysLeft < 0) return 'Overdue';
-    if (daysLeft === 0) return 'Due today';
-    if (daysLeft === 1) return 'Due tomorrow';
+    if (daysLeft < 0) return "Overdue";
+    if (daysLeft === 0) return "Due today";
+    if (daysLeft === 1) return "Due tomorrow";
     return `Due in ${daysLeft} days`;
 }

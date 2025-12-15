@@ -9,7 +9,6 @@
  */
 import "./styles.js";
 import { initApp } from "./controller.js";
-import "./styles/test.css";
 
 console.log("🚀 Webpack Template Running!");
 

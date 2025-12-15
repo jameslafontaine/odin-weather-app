@@ -65,4 +65,15 @@ export const UIUtils = {
 
         return svg;
     },
+    async renderSvg({ path, target, className = "" }) {
+        const response = await fetch(path);
+        const svg = await response.text();
+
+        target.innerHTML = svg;
+
+        const svgEl = target.querySelector("svg");
+        if (className) svgEl.classList.add(className);
+
+        return svgEl;
+    },
 };

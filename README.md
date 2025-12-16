@@ -59,6 +59,7 @@ The code is structured into **separate modules** for clean separation of concern
 - Loading indicators display while fetching data
 - Errors are displayed in a **non-disruptive UI container**
 - Smooth transitions prevent layout jumps when errors appear/disappear
+- Simulate network speeds with setTimeout()
 
 ---
 

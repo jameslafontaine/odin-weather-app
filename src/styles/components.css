@@ -7,6 +7,162 @@
    ========================================================================== */
 /* #region */
 
+/* ------------------------------
+    Search form
+    ------------------------------ */
+
+.search-area {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#city-input {
+    border-radius: 25px;
+    border: none;
+    padding: 0.25rem 0.5rem;
+}
+
+.search-button {
+    padding: 0.25rem;
+}
+
+.error-display {
+    color: rgb(177, 0, 0);
+    background-color: rgb(247, 119, 119);
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    min-height: 2.6rem;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    border: 1px solid red;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.error-display.visible {
+    opacity: 1;
+}
+
+#loading {
+    position: absolute;
+    left: calc(70% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+
+#loading.visible {
+    opacity: 1;
+}
+
+#loading p {
+    margin: 0;
+}
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+h1 {
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Current conditions */
+
+/* Container for current conditions icon */
+.current-conditions .weather-icon {
+    width: 7rem; /* Use width, not min-width */
+    height: 7rem; /* Set both dimensions */
+    display: flex; /* Center the SVG */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container for forecast icons */
+.forecast-day .weather-icon {
+    width: 5rem; /* Smaller for forecast */
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The SVG itself */
+.weather-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block; /* Remove inline spacing */
+}
+
+.celsius-button,
+.fahrenheit-button {
+    background-color: inherit;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+}
+
+.celsius-button {
+    border-right: 1px solid var(--color-text-secondary);
+}
+
+.celsius-button.selected,
+.fahrenheit-button.selected {
+    color: var(--color-text-primary);
+    font-weight: bold;
+}
+
+.current-conditions .weekday {
+    font-size: 1.75rem;
+    color: var(--color-text-secondary);
+}
+.current-conditions .conditions {
+    font-size: 1.5rem;
+    color: var(--color-text-secondary);
+}
+
+/* 7-day forecast */
+
+.forecast-day .weekday {
+    font-size: 1.5rem;
+}
+
+.temp-min {
+    color: var(--color-text-secondary);
+}
+
 /* Component-level media queries live here if the component needs to adapt at different screen sizes: */
 
 @media (max-width: 500px) {

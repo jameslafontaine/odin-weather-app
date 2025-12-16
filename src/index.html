@@ -10,12 +10,20 @@
 
     <body>
         <div class="app">
-            <form class="search-form">
-                <label for="city-input">Enter a city:</label>
-                <input type="text" name="city" id="city-input" />
-                <button>Search</button>
-                <p class="error-display"></p>
-            </form>
+            <div class="search-area">
+                <form class="search-form">
+                    <label for="city-input">Enter a city:</label>
+                    <input type="text" name="city" id="city-input" />
+                    <button class="search-button">Search</button>
+                </form>
+
+                <div id="loading">
+                    <div class="spinner"></div>
+                    <p>Loading weather…</p>
+                </div>
+            </div>
+
+            <p class="error-display"></p>
 
             <div class="weather-data">
                 <h1 class="header-title">*City Name Here* Weather</h1>
@@ -24,58 +32,73 @@
                     <div class="lhs">
                         <span class="weather-icon-container">*Weather Icon Here*</span>
                         <span class="current-temp">69</span>
-                        <button class="celsius-button">°C</button>
-                        <button class="fahrenheit-button">°F</button>
+                        <div class="temp-unit-buttons">
+                            <button class="celsius-button selected">°C</button>
+                            <button class="fahrenheit-button">°F</button>
+                        </div>
                     </div>
-                    <div class="extra-info"></div>
                     <div class="rhs">
                         <div class="weekday">*Weekday here*</div>
                         <div class="conditions">*Conditions here</div>
                     </div>
                 </div>
-                <div class="forecast">
-                    <h2>7-day Forecast</h2>
+                <div class="seven-day-forecast">
+                    <h2>7-Day Forecast</h2>
                     <div class="forecast-day">
                         <div class="weekday">*Weekday here*</div>
                         <div class="weather-icon-container">*Weather Icon Here*</div>
                         <div class="conditions">*Conditions here*</div>
-                        <span class="tempMax">69°</span> <span class="tempMin">18°</span>
+                        <div class="temperatures">
+                            <span class="temp-max">69°</span> <span class="temp-min">18°</span>
+                        </div>
                     </div>
                     <div class="forecast-day">
                         <div class="weekday">*Weekday here*</div>
                         <div class="weather-icon-container">*Weather Icon Here*</div>
                         <div class="conditions">*Conditions here*</div>
-                        <span class="tempMax">69°</span> <span class="tempMin">18°</span>
+                        <div class="temperatures">
+                            <span class="temp-max">69°</span> <span class="temp-min">18°</span>
+                        </div>
                     </div>
                     <div class="forecast-day">
                         <div class="weekday">*Weekday here*</div>
                         <div class="weather-icon-container">*Weather Icon Here*</div>
                         <div class="conditions">*Conditions here*</div>
-                        <span class="tempMax">69°</span> <span class="tempMin">18°</span>
+                        <div class="temperatures">
+                            <span class="temp-max">69°</span> <span class="temp-min">18°</span>
+                        </div>
                     </div>
                     <div class="forecast-day">
                         <div class="weekday">*Weekday here*</div>
                         <div class="weather-icon-container">*Weather Icon Here*</div>
                         <div class="conditions">*Conditions here*</div>
-                        <span class="tempMax">69°</span> <span class="tempMin">18°</span>
+                        <div class="temperatures">
+                            <span class="temp-max">69°</span> <span class="temp-min">18°</span>
+                        </div>
                     </div>
                     <div class="forecast-day">
                         <div class="weekday">*Weekday here*</div>
                         <div class="weather-icon-container">*Weather Icon Here*</div>
                         <div class="conditions">*Conditions here*</div>
-                        <span class="tempMax">69°</span> <span class="tempMin">18°</span>
+                        <div class="temperatures">
+                            <span class="temp-max">69°</span> <span class="temp-min">18°</span>
+                        </div>
                     </div>
                     <div class="forecast-day">
                         <div class="weekday">*Weekday here*</div>
                         <div class="weather-icon-container">*Weather Icon Here*</div>
                         <div class="conditions">*Conditions here*</div>
-                        <span class="tempMax">69°</span> <span class="tempMin">18°</span>
+                        <div class="temperatures">
+                            <span class="temp-max">69°</span> <span class="temp-min">18°</span>
+                        </div>
                     </div>
                     <div class="forecast-day">
                         <div class="weekday">*Weekday here*</div>
                         <div class="weather-icon-container">*Weather Icon Here*</div>
                         <div class="conditions">*Conditions here*</div>
-                        <span class="tempMax">69°</span> <span class="tempMin">18°</span>
+                        <div class="temperatures">
+                            <span class="temp-max">69°</span> <span class="temp-min">18°</span>
+                        </div>
                     </div>
                 </div>
             </div>

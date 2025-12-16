@@ -66,13 +66,41 @@ export const UIUtils = {
         return svg;
     },
     async renderSvg({ path, target, className = "" }) {
-        const response = await fetch(path);
-        const svg = await response.text();
+        if (!target) {
+            throw new Error("renderSvg: target element is null or undefined");
+        }
 
-        target.innerHTML = svg;
+        const response = await fetch(path);
+
+        if (!response.ok) {
+            throw new Error(`Failed to load SVG (${response.status}): ${path}`);
+        }
+
+        const svgText = await response.text();
+        target.innerHTML = svgText;
 
         const svgEl = target.querySelector("svg");
-        if (className) svgEl.classList.add(className);
+
+        if (!svgEl) {
+            throw new Error(`No <svg> element found in ${path}`);
+        }
+
+        // ✨ FIX: Scope the styles to prevent conflicts
+        const uniqueId = `svg-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+        svgEl.setAttribute("data-svg-id", uniqueId);
+
+        // Find the <style> element and scope it
+        const styleEl = svgEl.querySelector("style");
+        if (styleEl) {
+            // Prefix all class selectors with the unique ID
+            let css = styleEl.textContent;
+            css = css.replace(/\.cls-/g, `[data-svg-id="${uniqueId}"] .cls-`);
+            styleEl.textContent = css;
+        }
+
+        if (className) {
+            svgEl.classList.add(className);
+        }
 
         return svgEl;
     },

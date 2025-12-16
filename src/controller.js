@@ -4,7 +4,6 @@
  * Responsibilities:
  *  - Initialize core application components.
  *  - Create and configure all view instances.
- *  - Connect the data/model layer with view event handlers.
  *  - Trigger the render of UI components.
  *
  * @module controller
@@ -16,6 +15,7 @@ import { MainView } from "./views/MainView.js";
 // ----------------------
 // Data objects
 // ----------------------
+let storedWeatherData = {};
 
 // ----------------------
 // View instances
@@ -25,25 +25,26 @@ const mainView = new MainView(document.querySelector(".app"));
 // ----------------------
 // Helper to render the entire app state
 // ----------------------
-function renderAll(weatherData) {
+function renderAll() {
     mainView.clearSearchBar();
-    mainView.update(weatherData);
+    mainView.update(storedWeatherData);
 }
 
 // ----------------------
 // Assign all callbacks between views and the manager
 // ----------------------
 function assignCallbacks() {
-    mainView.setOnSearch((city) => {
-        handleWeatherData(city);
-    });
+    mainView.setOnSearch(handleWeatherData);
+    mainView.setOnTempToggle(renderAll);
 }
 
-function handleWeatherData(city) {
+async function handleWeatherData(city) {
+    await new Promise((resolve) => setTimeout(resolve, 1500));
     fetchWeatherData(city)
         .then((weatherData) => {
             console.log("Processed Weather Data:", weatherData);
-            renderAll(weatherData);
+            storedWeatherData = weatherData;
+            renderAll();
         })
         .catch((error) => {
             if (error.name === "WeatherApiError") {
@@ -65,6 +66,9 @@ function handleWeatherData(city) {
                 mainView.displaySearchError("An unexpected error occurred.");
                 console.error(error);
             }
+        })
+        .finally(() => {
+            mainView.setLoading(false);
         });
 }
 
@@ -73,6 +77,4 @@ function handleWeatherData(city) {
 // ----------------------
 export async function initApp() {
     assignCallbacks();
-    //manager.loadFromStorage?.();
-    //renderAll();
 }

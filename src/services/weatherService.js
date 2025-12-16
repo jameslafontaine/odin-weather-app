@@ -59,6 +59,7 @@ function processWeatherData(data) {
             icon: day.icon,
         })),
         city: data.resolvedAddress,
+        currentDatetime: data.days[0].datetime + "T" + data.currentConditions.datetime,
         currentTempC: Math.round(data.currentConditions.temp),
         currentTempF: Math.round(convertTempToFahrenheit(data.currentConditions.temp)),
         currentConditions: data.currentConditions.conditions,

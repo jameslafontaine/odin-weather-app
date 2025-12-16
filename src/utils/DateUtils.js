@@ -26,7 +26,7 @@ import { format, parseISO, differenceInDays, isBefore, isToday } from "date-fns"
  * @param {string} [pattern='MMM d, yyyy'] - Optional format pattern.
  * @returns {string} The formatted date string.
  */
-export function formatDueDate(date, pattern = "MMM d, yyyy") {
+export function formatDate(date, pattern = "MMM d, yyyy") {
     const parsed = typeof date === "string" ? parseISO(date) : date;
     return format(parsed, pattern);
 }

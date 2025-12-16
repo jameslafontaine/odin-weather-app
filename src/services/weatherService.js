@@ -1,10 +1,11 @@
 const API_KEY = "BUT7CRHV9X6V7EU8ZKTHAKZL7";
 
 class WeatherApiError extends Error {
-    constructor(message, status) {
+    constructor(message, status, code) {
         super(message);
         this.name = "WeatherApiError";
         this.status = status;
+        this.code = code;
     }
 }
 
@@ -29,7 +30,11 @@ async function fetchWeatherData(city) {
     }
 
     if (!response.ok) {
-        throw new WeatherApiError(`Weather API error`, response.status);
+        if (response.status === 400) {
+            throw new WeatherApiError("Invalid city name", response.status, "INVALID_CITY");
+        }
+
+        throw new WeatherApiError("Weather service error", response.status, "API_ERROR");
     }
 
     const rawData = await response.json();

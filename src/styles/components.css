@@ -8,9 +8,6 @@
 /* #region */
 
 /* Component-level media queries live here if the component needs to adapt at different screen sizes: */
-.card {
-    padding: var(--spacing-md);
-}
 
 @media (max-width: 500px) {
     .card {

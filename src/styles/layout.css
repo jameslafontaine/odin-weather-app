@@ -17,6 +17,14 @@ body {
     Search form
     ------------------------------ */
 
+.weather-data {
+    display: none;
+}
+
+.weather-data .visible {
+    display: block;
+}
+
 /* ------------------------------
     Current Conditions
     ------------------------------ */

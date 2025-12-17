@@ -127,7 +127,7 @@ export class MainView {
 
         currentConditionsEl.querySelector(".weekday").textContent = formatDate(
             new Date(weatherData.currentDatetime),
-            "EEEE h:00 a"
+            "h:00 a"
         );
         currentConditionsEl.querySelector(".conditions").textContent = weatherData.currentConditions;
     }
